@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智创平台 - AI驱动的催化剂设计解决方案</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 自定义CSS -->
+    <style>
+        :root {
+            --primary-blue: #1a4b8c;
+            --accent-teal: #00b4b3;
+            --dark-blue: #0a2a5a;
+            --light-bg: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .navbar-brand i {
+            color: var(--accent-teal);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-blue);
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-teal);
+        }
+        
+        /* 英雄区域 */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 2px, transparent 0),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 2px, transparent 0),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.1) 2px, transparent 0),
+                radial-gradient(circle at 60% 20%, rgba(255,255,255,0.1) 2px, transparent 0);
+            background-size: 100px 100px;
+            opacity: 0.5;
+        }
+        
+        .hero-title {
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 0 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 核心优势 */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-teal);
+            border-radius: 2px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 4px solid var(--accent-teal);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 20px;
+        }
+        
+        /* 应用案例 */
+        .case-study {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .case-img {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .case-content {
+            padding: 25px;
+        }
+        
+        /* 服务模式 */
+        .service-tabs {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .nav-tabs {
+            border-bottom: none;
+            background-color: #f8f9fa;
+            padding: 0 20px;
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            padding: 15px 20px;
+            color: var(--secondary);
+            font-weight: 500;
+            border-radius: 0;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background-color: white;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--accent-teal);
+        }
+        
+        .tab-content {
+            padding: 30px;
+        }
+        
+        /* 会员制按钮样式 - 两个按钮都保持蓝色 */
+        .member-btn {
+            background-color: var(--primary-blue) !important;
+            border-color: var(--primary-blue) !important;
+            color: white !important;
+        }
+        
+        .member-btn:hover {
+            background-color: var(--dark-blue) !important;
+            border-color: var(--dark-blue) !important;
+        }
+        
+        /* 联系表单 */
+        .contact-form {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 0.2rem rgba(0, 180, 179, 0.25);
+        }
+        
+        /* 底部二维码区域 */
+        .qr-section {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .qr-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="智创平台" class="logo-img">
+                智创平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">平台优势</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#applications">应用案例</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">服务模式</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="hero-title">AI驱动的催化剂<br>理性设计平台</h1>
+                        <p class="hero-subtitle">通过人工智能与第一性原理计算，我们将催化剂研发周期从数年缩短至数周，助力化工行业实现高效、绿色转型。</p>
+                        
+                        <div class="hero-stats">
+                            <div class="row text-center">
+                                <div class="col-md-4 stat-item">
+                                    <div class="stat-number">35%</div>
+                                    <div class="stat-label">催化技术对全球GDP贡献</div>
+                                </div>
+                                <div class="col-md-4 stat-item">
+                                    <div class="stat-number">80%</div>
+                                    <div class="stat-label">化学工业中催化产值占比</div>
+                                </div>
+                                <div class="col-md-4 stat-item">
+                                    <div class="stat-number">95%+</div>
+                                    <div class="stat-label">AI设计催化剂选择性</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="text-center">
+                            <i class="fas fa-brain" style="font-size: 15rem; opacity: 0.7;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 平台优势 -->
+        <section id="about" class="py-5">
+            <div class="container">
+                <h2 class="section-title">平台核心优势</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>研发效率指数级提升</h4>
+                            <p>通过遗传算法与神经网络结合，在数百万种可能的成分组合中快速锁定潜力最高的候选者，将催化剂设计周期从传统的数月至数年缩短至数周。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>性能突破性提升</h4>
+                            <p>AI精准调控催化剂表面特性，在Baeyer-Villiger氧化等关键路径中，催化剂对ε-己内酯的选择性稳定维持在95%至99%之间，转化率提升15%-30%。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4>成本与环境双赢</h4>
+                            <p>专注于开发基于锰、铈、钒等丰产元素的复合金属氧化物催化剂，通过AI设计复杂微观结构，实现贵金属催化剂替代，降低30-40%生产成本。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-lg-6 mb-4">
+                        <h4 class="mb-3">技术原理</h4>
+                        <p>本平台利用第一性原理计算结合机器学习算法，整合原子尺度（如金属离子的d带中心、电负性）、微观尺度（如比表面积、孔径分布）及宏观尺度（如反应温度、空速）的描述符，通过深度学习揭示它们与催化性能之间复杂的非线性关系。</p>
+                        <p>依托中科曙光超算平台进行复杂计算，拥有VASP、CP2K、Materials Studio、Gaussian等专业软件使用版权，确保计算精度与效率。</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-4 bg-light rounded">
+                            <h5 class="mb-3">技术合作伙伴</h5>
+                            <div class="row text-center">
+                                <div class="col-6 mb-3">
+                                    <div class="p-3 bg-white rounded shadow-sm">
+                                        <i class="fas fa-server fa-2x text-primary mb-2"></i>
+                                        <p class="mb-0">中科曙光超算平台</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <div class="p-3 bg-white rounded shadow-sm">
+                                        <i class="fas fa-university fa-2x text-primary mb-2"></i>
+                                        <p class="mb-0">河南大学机器化学家平台</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 应用案例 -->
+        <section id="applications" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title">成功应用案例</h2>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="case-study">
+                            <div class="case-img">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="case-content">
+                                <h4>ε-己内酯合成催化剂</h4>
+                                <p>针对传统ε-己内酯合成中过度氧化等副反应导致产物纯度下降的问题，通过AI精准调控催化剂的表面酸性/碱性位点和氧物种的活化能力，优先促进目标反应路径。</p>
+                                <ul>
+                                    <li>转化率提升至95%以上</li>
+                                    <li>选择性达到98%</li>
+                                    <li>反应温度降低30℃，能耗减少25%</li>
+                                    <li>催化剂寿命延长至传统催化剂的2倍</li>
+                                </ul>
+                                <p class="mb-0"><strong>成果：</strong> ε-己内酯生产成本降低30-40%，PCL终端产品价格下降20%以上。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="case-study">
+                            <div class="case-img">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                            <div class="case-content">
+                                <h4>碳酸酯合成催化剂</h4>
+                                <p>开发将廉价环氧乙烷、环氧丙烷转化为更高价值碳酸乙烯酯、碳酸丙烯酯的新型催化剂。碳酸酯是重要的锂离子电池电解液溶剂，市场需求旺盛。</p>
+                                <ul>
+                                    <li>开辟新能源领域市场入口</li>
+                                    <li>高选择性合成电池级碳酸酯</li>
+                                    <li>降低电池材料生产成本</li>
+                                </ul>
+                                <p class="mb-0"><strong>前景：</strong> 为锂离子电池产业链提供关键材料，助力新能源产业发展。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务模式 -->
+        <section id="services" class="py-5">
+            <div class="container">
+                <h2 class="section-title">服务模式</h2>
+                <div class="service-tabs">
+                    <ul class="nav nav-tabs" id="serviceTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="project-tab" data-bs-toggle="tab" data-bs-target="#project" type="button" role="tab">项目制服务</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="member-tab" data-bs-toggle="tab" data-bs-target="#member" type="button" role="tab">会员制服务</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="saas-tab" data-bs-toggle="tab" data-bs-target="#saas" type="button" role="tab">SaaS平台</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="serviceTabsContent">
+                        <div class="tab-pane fade show active" id="project" role="tabpanel">
+                            <h4 class="mb-4">联合开发与定制设计项目</h4>
+                            <p>目标客户：对新持技术谨慎态度的大型化工企业、高校及研究所。此模式旨在降低客户的首次合作门槛，用实际成果建立信任。</p>
+                            
+                            <h5 class="mt-4 mb-3">收费模式："预付款+里程碑付款+成功费/性能奖金"</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3 border rounded">
+                                        <h6>预付款</h6>
+                                        <p class="mb-0">30-50万元，确保项目启动并覆盖初期成本</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3 border rounded">
+                                        <h6>里程碑付款</h6>
+                                        <p class="mb-0">交付候选方案、实验验证、中试报告</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3 border rounded">
+                                        <h6>成功费/性能奖金</h6>
+                                        <p class="mb-0">项目总额的20-30%或终端产品销售额的1%-3%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="member" role="tabpanel">
+                            <h4 class="mb-4">会员制服务</h4>
+                            <p>面向已建立初步信任或希望获得持续技术支持的客户，旨在建立长期合作关系，形成稳定收入。</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6 mb-4">
+                                    <div class="p-4 border rounded h-100">
+                                        <h5 class="text-primary">基础会员</h5>
+                                        <h3 class="my-3">20万元/年</h3>
+                                        <ul>
+                                            <li>每年1次催化剂优化项目</li>
+                                            <li>标准算力配额</li>
+                                            <li>优先技术支持</li>
+                                            <li>参与线上技术研讨会资格</li>
+                                        </ul>
+                                        <button class="btn member-btn mt-3">选择此方案</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="p-4 border rounded h-100">
+                                        <h5 class="text-primary">专业会员</h5>
+                                        <h3 class="my-3">50万元/年</h3>
+                                        <ul>
+                                            <li>每年3次定制设计项目</li>
+                                            <li>更高的优先算力配额</li>
+                                            <li>1名专属技术顾问</li>
+                                            <li>免费参加所有线下技术沙龙与培训</li>
+                                        </ul>
+                                        <button class="btn member-btn mt-3">选择此方案</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="saas" role="tabpanel">
+                            <h4 class="mb-4">SaaS平台（中期规划）</h4>
+                            <p>作为战略性增长引擎，AI催化剂设计平台致力于打造行业级生态系统。</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h5>高校与中小企业</h5>
+                                    <p>"开箱即用"的标准化工具，以极低的门槛培育用户习惯。</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>大型集团企业</h5>
+                                    <p>可定制化的平台解决方案，通过API集成满足个性化需求。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 p-4 bg-light rounded">
+                                <h5>平台价值主张</h5>
+                                <div class="row text-center mt-3">
+                                    <div class="col-md-4">
+                                        <i class="fas fa-mouse-pointer fa-2x text-primary mb-2"></i>
+                                        <h6>易用性</h6>
+                                        <p class="small">图形化界面降低使用门槛</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <i class="fas fa-bullseye fa-2x text-primary mb-2"></i>
+                                        <h6>精准性</h6>
+                                        <p class="small">工业级验证模型确保预测可靠性</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <i class="fas fa-plug fa-2x text-primary mb-2"></i>
+                                        <h6>开放性</h6>
+                                        <p class="small">开放接口实现与企业现有系统融合</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="contact-form">
+                            <h4 class="mb-4">获取专业咨询</h4>
+                            <form id="consultationForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">姓名</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="company" class="form-label">公司/机构</label>
+                                        <input type="text" class="form-control" id="company" name="company" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">邮箱</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">电话</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="interest" class="form-label">感兴趣的服务</label>
+                                    <select class="form-control" id="interest" name="interest">
+                                        <option>项目制服务</option>
+                                        <option>会员制服务</option>
+                                        <option>SaaS平台</option>
+                                        <option>技术咨询</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">具体需求</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg">提交咨询</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-form">
+                            <h4 class="mb-4">联系信息</h4>
+                            <div class="d-flex align-items-start mb-4">
+                                <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h6>地址</h6>
+                                    <p class="text-muted mb-0">河南省开封市河南大学金明校区</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <i class="fas fa-phone text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h6>电话</h6>
+                                    <p class="text-muted mb-0">18025585025</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h6>邮箱</h6>
+                                    <p class="text-muted mb-0">zyfongchem@henu.edu.cn</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <i class="fas fa-clock text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h6>工作时间</h6>
+                                    <p class="text-muted mb-0">周一至周五 9:00-18:00</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 底部二维码区域 -->
+                            <div class="qr-container">
+                                <h5 class="mb-3">关注我们</h5>
+                                <div class="qr-code">
+                                    <img src="wechat-qr.png" alt="微信二维码">
+                                </div>
+                                <p class="text-muted">扫描二维码添加微信</p>
+                                <p class="small text-muted">添加后请备注"智创平台咨询"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-atom me-2"></i>智创平台</h5>
+                    <p class="mt-3">AI驱动的催化剂理性设计平台，通过人工智能与第一性原理计算相结合，将催化剂研发周期从数年缩短至数周，助力化工行业实现高效、绿色转型。</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">平台优势</a></li>
+                        <li><a href="#applications">应用案例</a></li>
+                        <li><a href="#services">服务模式</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>服务项目</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">催化剂设计</a></li>
+                        <li><a href="#">分子模拟</a></li>
+                        <li><a href="#">工艺优化</a></li>
+                        <li><a href="#">技术咨询</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>联系我们</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>河南省开封市河南大学金明校区</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>18025585025</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>zyfongchem@henu.edu.cn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">© 2023 智创平台 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 自定义JS -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+        
+        // 表单提交 - 发送邮件
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = {
+                name: document.getElementById('name').value,
+                company: document.getElementById('company').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                interest: document.getElementById('interest').value,
+                message: document.getElementById('message').value
+            };
+            
+            // 构造邮件内容
+            const subject = `智创平台咨询 - ${formData.name} - ${formData.company}`;
+            const body = `
+姓名: ${formData.name}
+公司/机构: ${formData.company}
+邮箱: ${formData.email}
+电话: ${formData.phone}
+感兴趣的服务: ${formData.interest}
+
+具体需求:
+${formData.message}
+
+此邮件由智创平台网站自动发送
+            `.trim();
+            
+            // 使用mailto链接发送邮件
+            const mailtoLink = `mailto:zyfongchem@henu.edu.cn?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // 打开邮件客户端
+            window.location.href = mailtoLink;
+            
+            // 显示成功消息
+            alert('感谢您的咨询！邮件客户端已打开，请点击发送完成咨询提交。');
+            
+            // 重置表单
+            this.reset();
+        });
+    </script>
+</body>
+</html>
